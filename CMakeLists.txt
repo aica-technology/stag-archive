@@ -11,8 +11,14 @@ FILE(GLOB ED_sources src/ED/*.cpp)
 
 LIST(APPEND all_source_files ${ED_sources})
 
-add_library(stag_lib ${all_source_files})
-target_link_libraries(stag_lib ${OpenCV_LIBS})
+add_library(${PROJECT_NAME} ${all_source_files})
+target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS})
 
 add_executable(stag_main src/main.cpp)
-target_link_libraries(stag_main ${OpenCV_LIBS} stag_lib)
+target_link_libraries(stag_main ${OpenCV_LIBS} ${PROJECT_NAME})
+
+install(TARGETS ${PROJECT_NAME}
+        DESTINATION lib)
+
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/
+        DESTINATION include)

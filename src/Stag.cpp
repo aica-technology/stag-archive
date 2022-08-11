@@ -253,4 +253,11 @@ Mat Stag::createMatFromPolarCoords(double radius, double radians, double circleR
 	return point;
 }
 
+cv::Mat Stag::drawMarkers() {
+  return drawer.drawMarkers(image, markers);
+}
+vector<Marker> Stag::getMarkerList() const {
+  return markers;
+}
+
 } // namespace stag

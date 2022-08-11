@@ -1,5 +1,5 @@
 #include "opencv2/opencv.hpp"
-#include "Stag.h"
+#include "stag/Stag.h"
 
 
 int main(int argc, char** argv)

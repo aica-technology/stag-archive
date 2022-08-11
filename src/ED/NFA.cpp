@@ -2,7 +2,7 @@
 #include <limits.h>
 #include <float.h>
 #include <math.h>
-#include "NFA.h"
+#include "stag/ED/NFA.h"
 
 namespace stag {
 

@@ -2,8 +2,8 @@
 #include <opencv/cv.h>
 #include <opencv/cxcore.h>
 
-#include "ImageSmooth.h"
-#include "ImageSmoothCV.h"
+#include "stag/ED/ImageSmooth.h"
+#include "stag/ED/ImageSmoothCV.h"
 
 namespace stag {
 

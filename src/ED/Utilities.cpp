@@ -8,8 +8,8 @@
 
 //Burak - commented the line below
 //#include "ImageVideoLib.h"
-#include "Utilities.h"
-#include "Timer.h"
+#include "stag/ED/Utilities.h"
+#include "stag/ED/Timer.h"
 
 //Burak - suppresses _CRT_SECURE_NO_DEPRECATE warnings
 #pragma warning(disable: 4996) 

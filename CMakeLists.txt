@@ -4,6 +4,7 @@ PROJECT(STag VERSION 0.0.0 LANGUAGES CXX)
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 
 find_package(OpenCV REQUIRED)
+include_directories(${PROJECT_SOURCE_DIR}/include)
 
 FILE(GLOB all_source_files src/*.cpp)
 FILE(GLOB ED_sources src/ED/*.cpp)

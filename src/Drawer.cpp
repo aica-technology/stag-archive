@@ -1,5 +1,6 @@
-#include "Drawer.h"
-#include "colors.h"
+#include "stag/Drawer.h"
+#include "stag/colors.h"
+#include "stag/OpenCVConstants.h"
 
 namespace stag {
 

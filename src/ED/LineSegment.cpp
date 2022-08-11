@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <math.h>
-#include "LineSegment.h"
+#include "stag/ED/LineSegment.h"
 
 namespace stag {
 ///------------------------------------------------------------------

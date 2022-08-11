@@ -2,14 +2,14 @@
 #include <stdio.h>
 #include <math.h>
 
-#include <opencv/cv.h>
-#include <opencv/cxcore.h>
-#include <opencv/highgui.h>
+#include <opencv2/opencv.hpp>
+#include <opencv2/core.hpp>
+#include <opencv2/highgui.hpp>
 
 //Burak - commented the line below
 //#include "ImageVideoLib.h"
-#include "Utilities.h"
-#include "Timer.h"
+#include "stag/ED/Utilities.h"
+#include "stag/ED/Timer.h"
 
 //Burak - suppresses _CRT_SECURE_NO_DEPRECATE warnings
 #pragma warning(disable: 4996) 
@@ -332,7 +332,8 @@ void StdRGB2Lab(unsigned char *redImg, unsigned char *greenImg, unsigned char *b
 
 ///-------------------------------------------------------------------------------------
 /// My formulation on an IplImage
-/// 
+///
+/*
 void RGB2Lab(IplImage *rgbImg, IplImage *labImg){
   // First RGB 2 XYZ
   double red, green, blue;
@@ -395,7 +396,7 @@ void RGB2Lab(IplImage *rgbImg, IplImage *labImg){
     } //end-for
   } //end-for
 } //end-RGB2Lab
-
+*/
 ///-------------------------------------------------------------------------------------
 /// Another conversion function based on OpenCV's formulation
 ///
@@ -571,6 +572,8 @@ void StdRGB2Lab(unsigned char *redImg, unsigned char *greenImg, unsigned char *b
 } //end-StdRGB2Lab
 #endif
 
+/*
+[[deprecated]]
 void RGB2LabOpenCV(unsigned char *redImg, unsigned char *greenImg, unsigned char *blueImg, 
                    unsigned char *LImg, unsigned char *aImg, unsigned char *bImg,
                    int width, int height){
@@ -650,7 +653,7 @@ void RGB2LabOpenCV(unsigned char *redImg, unsigned char *greenImg, unsigned char
   for (int i=0; i<width*height; i++){bImg[i] = (unsigned char)((bImg[i]-min)*scale);}
 #endif
 } //end-RGB2LabOpenCV
-
+*/
 
 /*******************************************************************************
 var_U = ( 4 * X ) / ( X + ( 15 * Y ) + ( 3 * Z ) )

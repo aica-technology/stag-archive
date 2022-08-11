@@ -4,8 +4,7 @@
 #include <string>
 #include "opencv2/opencv.hpp"
 
-#include "ED/EDLines.h"
-#include "ED/EdgeMap.h"
+#include "EDInterface.h"
 #include "QuadDetector.h"
 #include "Marker.h"
 

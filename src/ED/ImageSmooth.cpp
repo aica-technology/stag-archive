@@ -1,15 +1,16 @@
 #include <stdlib.h>
-#include <opencv/cv.h>
-#include <opencv/cxcore.h>
+#include <opencv2/opencv.hpp>
+#include <opencv2/core.hpp>
 
-#include "ImageSmooth.h"
-#include "ImageSmoothCV.h"
+#include "stag/ED/ImageSmooth.h"
 
 namespace stag {
 
 ///----------------------------------------------------------
 /// Copy from our buffer to Ipl image buffer taking care of the alignment
 ///
+/*
+[[deprecated]]
 static void CopyToIplBuffer(unsigned char *buffer, IplImage *ipl){
   int width = ipl->width;
   int height = ipl->height;
@@ -19,11 +20,13 @@ static void CopyToIplBuffer(unsigned char *buffer, IplImage *ipl){
     memcpy(p, &buffer[i*width], width);
   } //end-for
 } //end-IplImage
-
+*/
 
 ///----------------------------------------------------------
 /// Copy from Ipl image buffer taking our buffer care of the alignment
 ///
+/*
+[[deprecated]]
 static void CopyFromIplBuffer(unsigned char *buffer, IplImage *ipl){
   int width = ipl->width;
   int height = ipl->height;
@@ -33,44 +36,30 @@ static void CopyFromIplBuffer(unsigned char *buffer, IplImage *ipl){
     memcpy(&buffer[i*width], p, width);
   } //end-for
 } //end-CopyFromIplBuffer
-
+*/
 ///---------------------------------------------------------------------------------------------------------------------------------------
 /// Given an image of size widthxheight in srcImg, smooths the image using a gaussian filter (cvSmooth) and copies the smoothed image to smoothImg
 /// If sigma=0.0, then calls cvSmooth(srcImg, smoothedImg, CV_GAUSSIAN, 5, 5); This is the default.
 /// If sigma>0.0, then calls cvSmooth(srcImg, smoothedImg, CV_GAUSSIAN, 0, 0, sigma);
 ///
 void SmoothImage(unsigned char *srcImg, unsigned char *smoothImg, int width, int height, double sigma){
-  IplImage *iplImg1, *iplImg2;
-
-  if (sigma <= 0){
-    memcpy(smoothImg, srcImg, width*height);
-    return;
-  } //end-if
-
-  iplImg1 = cvCreateImageHeader(cvSize(width, height),IPL_DEPTH_8U, 1);
-  iplImg1->imageData = (char *)srcImg;
-  iplImg1->widthStep = width;
-
-  iplImg2 = cvCreateImageHeader(cvSize(width, height),IPL_DEPTH_8U, 1);
-  iplImg2->imageData = (char *)smoothImg;
-  iplImg2->widthStep = width;
+  cv::Mat srcI(height, width, CV_8UC1, (char *)srcImg);
+  cv::Mat smtI(height, width, CV_8UC1, (char *)smoothImg);
 
   if (sigma == 1.0)
-    cvSmooth(iplImg1, iplImg2, CV_GAUSSIAN, 5, 5);
+    cv::GaussianBlur(srcI, smtI, cv::Size(5, 5), 0, 0);
   else if (sigma == 1.5)
-    cvSmooth(iplImg1, iplImg2, CV_GAUSSIAN, 7, 7);  // seems to be better?
-  else 
-    cvSmooth(iplImg1, iplImg2, CV_GAUSSIAN, 0, 0, sigma);
-
-  cvReleaseImageHeader(&iplImg1);
-  cvReleaseImageHeader(&iplImg2);
+    cv::GaussianBlur(srcI, smtI, cv::Size(7, 7), 0, 0);  // seems to be better?
+  else
+    cv::GaussianBlur(srcI, smtI, cv::Size(0, 0), sigma, sigma);
 } //end-SmoothImage
 
 ///---------------------------------------------------------------------------------------------------------------------------------------
 /// Given an image of size widthxheight in srcImg, smooths the image using a gaussian filter (cvSmooth) and copies the smoothed image to smoothImg
 /// If sigma=0.0, then calls cvSmooth(srcImg, smoothedImg, CV_GAUSSIAN, 5, 5); This is the default.
 /// If sigma>0.0, then calls cvSmooth(srcImg, smoothedImg, CV_GAUSSIAN, 0, 0, sigma);
-///
+/*
+[[deprecated]]
 void SmoothImage(IplImage *iplImg1, unsigned char *smoothImg, double sigma){
   IplImage *iplImg2;
 
@@ -93,7 +82,7 @@ void SmoothImage(IplImage *iplImg1, unsigned char *smoothImg, double sigma){
 
   cvReleaseImageHeader(&iplImg2);
 } //end-SmoothImage
-
+*/
 ///------------------------------------------------------------------------------------------
 /// Perform Gauss filter on "src" and store the result in "dst"
 ///

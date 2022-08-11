@@ -2,8 +2,9 @@
 #define UTILITIES_H
 
 #include <stdio.h>
-#include <opencv/cv.h>
-#include <opencv/cxcore.h>
+
+#include "stag/OpenCVConstants.h"
+
 #include "EdgeMap.h"
 
 namespace stag {
@@ -21,7 +22,8 @@ void MyRGB2Lab(unsigned char *redImg, unsigned char *greenImg, unsigned char *bl
                unsigned char *LImg, unsigned char *aImg, unsigned char *bImg,
                int width, int height);
 
-void RGB2Lab(IplImage *rgbImg, IplImage *labImg);
+//[[deprecated]]
+//void RGB2Lab(IplImage *rgbImg, IplImage *labImg);
 
 void RGB2Lab2(unsigned char *redImg, unsigned char *greenImg, unsigned char *blueImg, 
              unsigned char *LImg, unsigned char *aImg, unsigned char *bImg,

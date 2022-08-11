@@ -10,7 +10,7 @@ inline double FastCosHP(double x);
 
 } // namespace stag
 
-#include "Ellipse.h"
+#include "stag/Ellipse.h"
 
 namespace stag {
 

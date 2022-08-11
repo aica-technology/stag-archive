@@ -3,20 +3,19 @@
 #include <math.h>
 #include <limits.h>
 
-#include <opencv/cv.h>
-#include <opencv/cxcore.h>
-#include <opencv/highgui.h>
+#include <opencv2/core.hpp>
+#include <opencv2/highgui.hpp>
 
 //#include "EDDLL.h"
 
-#include "EDInternals.h"
-#include "ED.h"
-#include "ImageSmooth.h"
-#include "GradientOperators.h"
-#include "ValidateEdgeSegments.h"
+#include "stag/ED/EDInternals.h"
+#include "stag/ED/ED.h"
+#include "stag/ED/ImageSmooth.h"
+#include "stag/ED/GradientOperators.h"
+#include "stag/ED/ValidateEdgeSegments.h"
 
-#include "Utilities.h"
-#include "Timer.h"
+#include "stag/ED/Utilities.h"
+#include "stag/ED/Timer.h"
 
 namespace stag {
 
@@ -164,6 +163,8 @@ EdgeMap *DetectEdgesByEDPF(unsigned char *srcImg, int width, int height, double 
 ///-------------------------------------------------------------------------------
 /// Use cvCanny and return the result as an EdgeMap. smoothingSigma must be >= 1.0
 ///
+/*
+[[deprecated]]
 EdgeMap *DetectEdgesByCannySR(unsigned char *srcImg, int width, int height, int cannyLowThresh, int cannyHighThresh, int sobelKernelApertureSize, double smoothingSigma){
   IplImage *iplImg = cvCreateImage(cvSize(width, height), IPL_DEPTH_8U, 1);
   IplImage *edgeImg = cvCreateImage(cvSize(width, height), IPL_DEPTH_8U, 1);
@@ -237,10 +238,12 @@ EdgeMap *DetectEdgesByCannySR(unsigned char *srcImg, int width, int height, int 
 
   return map;
 } //end-DetectEdgesByCannySR
-
+*/
 ///-------------------------------------------------------------------------------
 /// Use cvCanny and return the result as an EdgeMap. smoothingSigma must be >= 1.0. Use ED2 for directionless linking
 ///
+/*
+[[deprecated]]
 EdgeMap *DetectEdgesByCannySR2(unsigned char *srcImg, int width, int height, int cannyLowThresh, int cannyHighThresh, int sobelKernelApertureSize, double smoothingSigma){
   IplImage *iplImg = cvCreateImage(cvSize(width, height), IPL_DEPTH_8U, 1);
   IplImage *edgeImg = cvCreateImage(cvSize(width, height), IPL_DEPTH_8U, 1);
@@ -286,10 +289,12 @@ EdgeMap *DetectEdgesByCannySR2(unsigned char *srcImg, int width, int height, int
 
   return map;
 } //end-DetectEdgesByCannySR2
-
+*/
 ///----------------------------------------------------------------------------------------------------------------------------------------
 /// Use DetectEdgesByCannySR and then validate the edge segments afterwards
 ///
+/*
+[[deprecated]]
 EdgeMap *DetectEdgesByCannySRPF(unsigned char *srcImg, int width, int height, int sobelKernelApertureSize, double smoothingSigma){
   EdgeMap *map = DetectEdgesByCannySR(srcImg, width, height, 20, 20, sobelKernelApertureSize, smoothingSigma);
 
@@ -304,6 +309,7 @@ EdgeMap *DetectEdgesByCannySRPF(unsigned char *srcImg, int width, int height, in
 
   return map;
 } //end-DetectEdgesByCannySRPF
+*/
 
 /****************************************** ED FOR COLOR IMAGES **********************************************/
 ///--------------------------------------------------------------------------------------------------------

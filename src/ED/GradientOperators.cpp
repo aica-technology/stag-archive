@@ -1,8 +1,9 @@
 #include <stdlib.h>
 #include <math.h>
 
+#include "stag/OpenCVConstants.h"
+
 #include "stag/ED/GradientOperators.h"
-#include "stag/ED/GradientOperatorsCV.h"
 #include "stag/ED/Utilities.h"
 
 namespace stag {
@@ -1120,6 +1121,8 @@ void ComputeGradientMapByMyCompass4Dirs(unsigned char *smoothCh1Img, unsigned ch
 ///-----------------------------------------------------------------------------------------------------------------------------------
 /// Compute color image gradient
 ///
+/*
+[[deprecated]]
 void ComputeGradientMapByPrewitt(IplImage *smoothImg, short *gradImg, unsigned char *dirImg, int GRADIENT_THRESH){
   if (smoothImg->nChannels != 3) return;
 
@@ -1183,6 +1186,7 @@ void ComputeGradientMapByPrewitt(IplImage *smoothImg, short *gradImg, unsigned c
     } //end-for
   } //end-for
 } //end-ComputeGradientMapByPrewitt
+*/
 
 ///-----------------------------------------------------------------------------------------------------------------
 /// Color image gradientby DiZenzo's method

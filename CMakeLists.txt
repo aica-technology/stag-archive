@@ -8,7 +8,7 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 
 FILE(GLOB_RECURSE SOURCE_FILES ${PROJECT_SOURCE_DIR}/src/*.cpp)
 
-add_library(${PROJECT_NAME} ${SOURCE_FILES})
+add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES})
 target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS})
 
 add_executable(stag_main ${PROJECT_SOURCE_DIR}/src/main.cpp)

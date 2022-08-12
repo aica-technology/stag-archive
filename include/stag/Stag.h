@@ -40,6 +40,8 @@ public:
 	Stag(int libraryHD = 15, int errorCorrection = 7, bool inKeepLogs = false);
 	size_t detectMarkers(const cv::Mat& inImage);
 	void logResults(string path = "");
+	cv::Mat drawMarkers();
+	vector<Marker> getMarkerList() const;
 };
 
 } // namespace stag

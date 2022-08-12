@@ -29,8 +29,11 @@ public:
 	// draws quads
 	void drawQuads(const string& path, cv::Mat image, const vector<Quad> &quads);
 
-	// draws markers
+	// draws markers to file
 	void drawMarkers(const string& path, cv::Mat image, const vector<Marker> &markers);
+
+	// draws markers to image
+	cv::Mat drawMarkers(cv::Mat image, const vector<Marker> &markers);
 
 	// draws refined markers and their ellipses
 	void drawEllipses(const string& path, cv::Mat image, const vector<Marker> &markers);

@@ -14,6 +14,12 @@ class EDInterface
 	EDLines* edLines = NULL;
 
 public:
+
+	~EDInterface() {
+		delete edgeMap;
+		delete edLines;
+	}
+
 	// runs EDPF and EDLines, keeps the results in memory
 	void runEDPFandEDLines(const cv::Mat &image);
 
@@ -27,7 +33,6 @@ public:
 	// calculates the intersection of two line segments
 	cv::Point2d intersectionOfLineSegments(const LineSegment& line1, const LineSegment& line2);
 
-    ~EDInterface();
 };
 
 } // namespace stag

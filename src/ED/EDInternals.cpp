@@ -165,7 +165,7 @@ static int *SortAnchorsByGradValue(short *gradImg, EdgeMap *map, int *pNoAnchors
     } //end-for
   } //end-for  
 
-  delete C;
+  delete[] C;
 
   *pNoAnchors = noAnchors;
   return A;
@@ -741,10 +741,10 @@ StartOfWhile:
 
   map->noSegments = noSegments;
 
-  delete chains;
-  delete stack;
-  delete pixels;
-  delete chainNos;
+  delete[] chains;
+  delete[] stack;
+  delete[] pixels;
+  delete[] chainNos;
 } //end-JoinAnchorPoints
 
 ///-----------------------------------------------------------------------------------
@@ -1286,10 +1286,10 @@ StartOfWhile:
   map->noSegments = noSegments;
 
   delete A;
-  delete chains;
-  delete stack;
-  delete pixels;
-  delete chainNos;
+  delete[] chains;
+  delete[] stack;
+  delete[] pixels;
+  delete[] chainNos;
 } //end-JoinAnchorPointsUsingSortedAnchors
 
 ///-----------------------------------------------------------------------------------
@@ -2301,10 +2301,10 @@ StartOfWhile:
   map->noSegments = noSegments;
 
   delete A;
-  delete chains;
-  delete stack;
-  delete pixels;
-  delete chainNos;
+  delete[] chains;
+  delete[] stack;
+  delete[] pixels;
+  delete[] chainNos;
 } //end-JoinAnchorPointsUsingSortedAnchors4Dirs
 
 ///----------------------------------------------------------------------------------------------
@@ -2839,7 +2839,7 @@ void JoinAnchorPointsUsingSortedAnchors(short *gradImg, EdgeMap *map, int GRADIE
 
   map->noSegments = noSegments;
 
-  delete tmpPixels;
+  delete[] tmpPixels;
   delete A;
 } // end-JoinAnchorPointsUsingSortedAnchors
 

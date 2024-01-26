@@ -39,9 +39,9 @@ public:
 
   // Destructor
   ~EdgeMap(){
-    delete edgeImg;
-    delete pixels;
-    delete segments;
+    delete[] edgeImg;
+    delete[] pixels;
+    delete[] segments;
   } //end-~EdgeMap
 
 

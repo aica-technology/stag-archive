@@ -94,8 +94,8 @@ void jacobi(double **a, int n, double d[], double **v, int nrot)
 		}
 		if (sm == 0.0)
 		{
-			delete b;
-			delete z;
+			delete[] b;
+			delete[] z;
 			return;
 		}
 		if (i < 4)
@@ -160,8 +160,8 @@ void jacobi(double **a, int n, double d[], double **v, int nrot)
 		}
 	}
 	//printf("Too many iterations in routine JACOBI");
-	delete b;
-	delete z;
+	delete[] b;
+	delete[] z;
 }
 
 ///-----------------------------------------------------------
@@ -205,7 +205,7 @@ void choldc(double **a, int n, double **l){
 		}
 	}
 
-	delete p;
+	delete[] p;
 }
 
 int inverse(double **TB, double **InvB, int N){
@@ -527,9 +527,10 @@ customEllipse::customEllipse(pix* points, int noPnts)
 	DeallocateMatrix(L, 7);
 	DeallocateMatrix(C, 7);
 	DeallocateMatrix(invL, 7);
-	delete d;
+	delete[] d;
 	DeallocateMatrix(V, 7);
 	DeallocateMatrix(sol, 7);
+	free(fitPoints);
 }
 
 
@@ -712,7 +713,7 @@ customEllipse::customEllipse(double* pX, double *pY, int noPnts)
 	DeallocateMatrix(L, 7);
 	DeallocateMatrix(C, 7);
 	DeallocateMatrix(invL, 7);
-	delete d;
+	delete[] d;
 	DeallocateMatrix(V, 7);
 	DeallocateMatrix(sol, 7);
 }
@@ -973,7 +974,7 @@ pix* customEllipse::DrawEllipse(int resolution)
 	DeallocateMatrix(Xneg, 3); 
 	DeallocateMatrix(ss1, 3); 
 	DeallocateMatrix(ss2, 3); 
-	delete lambda;
+	delete[] lambda;
 	DeallocateMatrix(uAiu, 3); 
 	DeallocateMatrix(A, 3);
 	DeallocateMatrix(Ai, 3);

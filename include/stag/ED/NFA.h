@@ -19,7 +19,7 @@ public:
 
   // Destructor
   ~NFALUT(){
-    delete LUT;
+    delete[] LUT;
   } //end-~NFALUT
 };
 

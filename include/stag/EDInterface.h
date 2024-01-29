@@ -1,6 +1,8 @@
 #ifndef EDINTERFACE_H
 #define EDINTERFACE_H
 
+#include <mutex>
+
 #include "opencv2/opencv.hpp"
 
 #include "ED/EDLines.h"
@@ -12,8 +14,7 @@ class EDInterface
 {
 	EdgeMap* edgeMap = NULL;
 	EDLines* edLines = NULL;
-    bool isEdLinesDeleted = false;
-    bool isEdgeMapDeleted = false;
+    std::mutex mutex_
 
 public:
 

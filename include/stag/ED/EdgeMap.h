@@ -39,10 +39,13 @@ public:
 
   // Destructor
   ~EdgeMap(){
-    delete[] edgeImg;
-    delete[] pixels;
-    delete[] segments;
-  } //end-~EdgeMap
+    if (edgeImg != NULL)
+        delete[] edgeImg;
+    if (pixels != NULL)
+        delete[] pixels;
+    if (segments != NULL)
+        delete[] segments;
+  }//end-~EdgeMap
 
 
   void ConvertEdgeSegments2EdgeImg(){

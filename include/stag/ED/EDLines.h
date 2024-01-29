@@ -53,10 +53,13 @@ public:
 
   /// Destructor
   ~EDLines(){
-    delete[] lines;
-    delete[] x;
-    delete[] y;
-  } //end-EDLines
+    if (lines != NULL)
+        delete[] lines;
+    if (x != NULL)
+        delete[] x;
+    if (y != NULL)
+        delete[] y;
+  }
 
   /// clear
   void clear(){noLines = 0;}

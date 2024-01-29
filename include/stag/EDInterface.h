@@ -12,6 +12,8 @@ class EDInterface
 {
 	EdgeMap* edgeMap = NULL;
 	EDLines* edLines = NULL;
+    bool isEdLinesDeleted = false;
+    bool isEdgeMapDeleted = false;
 
 public:
 

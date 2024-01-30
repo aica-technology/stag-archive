@@ -15,19 +15,23 @@ using cv::Point2d;
 
 void EDInterface::runEDPFandEDLines(const cv::Mat &image)
 {
+    mutex_.lock();
     if (edLines != NULL)
         delete edLines;
     if (edgeMap != NULL)
         delete edgeMap;
 
     edLines = DetectLinesByEDPF(edgeMap, image.data, image.size().width, image.size().height, false, 0);
+    mutex_.unlock();
 }
 
 EDInterface::~EDInterface() {
+    mutex_.lock();
     if (edLines != NULL)
         delete edLines;
     if (edgeMap != NULL)
         delete edgeMap;
+    mutex_.unlock();
 }
 
 

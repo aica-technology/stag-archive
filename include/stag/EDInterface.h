@@ -14,7 +14,6 @@ class EDInterface
 {
 	EdgeMap* edgeMap = NULL;
 	EDLines* edLines = NULL;
-    std::mutex mutex_;
 
 public:
 

@@ -18,9 +18,17 @@ Stag::Stag(int libraryHD, int inErrorCorrection, bool inKeepLogs)
 	decoder = Decoder(libraryHD);
 }
 
+Stag::~Stag() {
+    // Manually call the destructor of EDInterface
+    mutex_.lock();
+    edInterface.~EDInterface();
+    mutex_.unlock();
+}
+
 
 size_t Stag::detectMarkers(const cv::Mat& inImage)
 {
+    mutex_.lock();
     markers.clear();
 
 	image = inImage;
@@ -52,7 +60,7 @@ size_t Stag::detectMarkers(const cv::Mat& inImage)
 	for (int indMarker = 0; indMarker < markers.size(); indMarker++) {
 		poseRefiner.refineMarkerPose(&edInterface, markers[indMarker]);
     }
-
+    mutex_.unlock();
     return markers.size();
 }
 

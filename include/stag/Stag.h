@@ -34,8 +34,12 @@ class Stag
 	Codeword readCode(const Quad &q);
 	void fillCodeLocations();
 	cv::Mat createMatFromPolarCoords(double radius, double radians, double circleRadius);
+    std::mutex mutex_;
 
 public:
+
+    ~Stag();
+
 	vector<Marker> markers;
 	Stag(int libraryHD = 15, int errorCorrection = 7, bool inKeepLogs = false);
 	size_t detectMarkers(const cv::Mat& inImage);
